@@ -1,0 +1,28 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "API para o processo seletivo da Sonax - Sistema de gerenciamento de protocolos, usuários e mensagens",
+  "keywords": [
+    "sonax",
+    "api",
+    "protocolos",
+    "mensagens",
+    "usuarios"
+  ],
+  "homepage": "https://github.com/MatheusDuarte10/sonax-api-desafio#readme",
+  "bugs": {
+    "url": "https://github.com/MatheusDuarte10/sonax-api-desafio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusDuarte10/sonax-api-desafio.git"
+  },
+  "license": "ISC",
+  "author": "Matheus Duarte",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
