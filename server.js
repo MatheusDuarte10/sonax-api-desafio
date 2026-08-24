@@ -115,6 +115,11 @@ const servidor = http.createServer((pedido, resposta)=>{
       );
    }
 
+   if (resultado.length === 0 && (queryParams.nome || queryParams.email)) {
+      enviarErro("Erro 404 - Nenhum usuário encontrado com os critérios informados", 404);
+      return;
+   }
+   
    const page = queryParams.page || 1;
    const limit = queryParams.limit || 10;
    const resultadoPaginado = paginar(resultado, page, limit);
@@ -173,6 +178,12 @@ const servidor = http.createServer((pedido, resposta)=>{
       resultado = resultado.filter(controle => 
          controle.canal && controle.canal.toLowerCase() === canalBusca
       );
+   }
+
+   const temFiltroProtocolo = queryParams.usuario_id || queryParams.status || queryParams.tipo || queryParams.canal;
+   if (resultado.length === 0 && temFiltroProtocolo) {
+      enviarErro("Erro 404 - Nenhum protocolo encontrado com os critérios informados", 404);
+      return;
    }
 
    const page = queryParams.page || 1;
@@ -257,6 +268,12 @@ const servidor = http.createServer((pedido, resposta)=>{
       resultado = resultado.filter(controle => 
          controle.canal && controle.canal.toLowerCase() === canalBusca
       );
+   }
+
+   const temFiltroMensagem = queryParams.protocolo_id || queryParams.usuario_id || queryParams.direcao || queryParams.status || queryParams.canal;
+   if (resultado.length === 0 && temFiltroMensagem) {
+      enviarErro("Erro 404 - Nenhuma mensagem encontrada com os critérios informados", 404);
+      return;
    }
 
    const page = queryParams.page || 1;
